@@ -8,7 +8,7 @@ export const sortSelector = (state) => {
   return state.sortBy;
 };
 
-export const sorted2Selector = createSelector(
+export const sortedSelector = createSelector(
   [productsSelector, sortSelector],
   (allProducts, sort) => {
     const { key, direction } = sort;

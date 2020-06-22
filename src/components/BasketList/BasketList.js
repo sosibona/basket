@@ -3,7 +3,7 @@ import Product from "../Product/Product";
 import Total from "../Total/Total";
 import "./BasketList.scss";
 import { connect } from "react-redux";
-import { sorted2Selector } from "../../products/products.selectors";
+import { sortedSelector } from "../../products/products.selectors";
 import { sortProduct } from "../../products/products.actions";
 import PropTypes from "prop-types";
 
@@ -47,7 +47,7 @@ const BasketList = ({ products, sortProducts }) => {
 
 const mapState = (state) => {
   return {
-    products: sorted2Selector(state),
+    products: sortedSelector(state),
   };
 };
 

@@ -6,12 +6,15 @@ import { addProduct } from "../../products/products.actions";
 import PropTypes from "prop-types";
 
 const Header = ({ addProduct }) => {
-  const [product, setProduct] = useState("");
+  const [product, setProduct] = useState({ name: "", error: false });
   const [price, setPrice] = useState({ priceOne: "", error: false });
   const [count, setCount] = useState({ number: "", error: false });
 
   const handleProduct = (event) => {
-    setProduct(event.target.value);
+    setProduct({
+      ...product,
+      name: event.target.value,
+    });
   };
 
   const handlePrice = (event) => {
@@ -29,7 +32,14 @@ const Header = ({ addProduct }) => {
   };
 
   const addNewProduct = (product, count, price) => {
-    if (isPositiveInteger(count)) {
+    if (product.name.length === 0) {
+      setProduct({ ...product, error: true });
+      return;
+    } else {
+      setProduct({ ...product, error: false });
+    }
+
+    if (!isPositiveInteger(count.number)) {
       setCount({
         ...count,
         error: true,
@@ -54,13 +64,13 @@ const Header = ({ addProduct }) => {
         error: false,
       });
     }
-    setProduct("");
+    setProduct({ name: "", error: false });
     setCount({ number: "", error: false });
     setPrice({ priceOne: "", error: false });
     const newProduct = {
       id: Math.ceil(Math.random() * 100000).toString(),
-      name: product,
-      count: count.number,
+      name: product.name,
+      count: +count.number,
       pricePerOne: +price.priceOne,
     };
     addProduct(newProduct);
@@ -70,10 +80,12 @@ const Header = ({ addProduct }) => {
     <header className="header">
       <div className="add-product">
         <input
-          className="add-product__input-name input"
+          className={`add-product__input-name input ${
+            product.error ? "error" : ""
+          }`}
           placeholder="product"
           type="text"
-          value={product}
+          value={product.name}
           onChange={() => handleProduct(event)}
         />
         <input

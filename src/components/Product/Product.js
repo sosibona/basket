@@ -16,7 +16,7 @@ class Product extends React.Component {
 
   handleCountProduct(event, id) {
     const number = event.target.value;
-    const isValid = isPositiveInteger(number);
+    const isValid = !isPositiveInteger(number);
     this.setState({
       ...this.state,
       isValidCount: !isValid,
@@ -71,7 +71,7 @@ const mapDispatch = {
 };
 
 Product.propTypes = {
-  count: PropTypes.string.isRequired,
+  count: PropTypes.number.isRequired,
   updateProduct: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
