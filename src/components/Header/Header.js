@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Header.scss";
+import { isPositiveInteger } from "../../isPositiveInteger";
 import { connect } from "react-redux";
 import { addProduct } from "../../products/products.actions";
 import PropTypes from "prop-types";
@@ -28,11 +29,7 @@ const Header = ({ addProduct }) => {
   };
 
   const addNewProduct = (product, count, price) => {
-    if (
-      +count.number <= 0 ||
-      !isFinite(Number(+count.number)) ||
-      +count.number % 1 !== 0
-    ) {
+    if (isPositiveInteger(count)) {
       setCount({
         ...count,
         error: true,

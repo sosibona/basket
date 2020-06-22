@@ -53,18 +53,13 @@ export const productsReducer = (state = initialState, action) => {
     case SORT_PRODUCT: {
       const { key } = action.payload;
       let direction = "ascending";
-      if (
-        // state.sortBy &&
-        state.sortBy.key === key &&
-        state.sortBy.direction === "ascending"
-      ) {
+      if (state.sortBy.key === key && state.sortBy.direction === "ascending") {
         direction = "descending";
       }
       const sortedList = {
         direction,
         key,
       };
-      console.log(sortedList);
       return {
         ...state,
         sortBy: sortedList,

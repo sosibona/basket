@@ -1,12 +1,9 @@
 import React from "react";
 import "./Product.scss";
+import { isPositiveInteger } from "../../isPositiveInteger";
 import { connect } from "react-redux";
 import { deleteProduct, updateProduct } from "../../products/products.actions";
 import PropTypes from "prop-types";
-
-function isPositiveInteger(number) {
-  return +number <= 0 || !isFinite(Number(+number)) || +number % 1 !== 0;
-}
 
 class Product extends React.Component {
   constructor(props) {
@@ -59,7 +56,7 @@ class Product extends React.Component {
             type="text"
             name="count"
             value={this.state.count}
-            onChange={() => this.handleCountProduct(event, id)}
+            onChange={(event) => this.handleCountProduct(event, id)}
           />
         </td>
         <td className="product-price">${pricePerOne}</td>
