@@ -1,5 +1,5 @@
 import React from "react";
-import Basket from "./components/Basket";
+import Basket from "./components/Basket/Basket";
 import { Provider } from "react-redux";
 import store from "./store";
 

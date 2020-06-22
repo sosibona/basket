@@ -1,0 +1,25 @@
+.table {
+  border-collapse: collapse;
+  background-color: #fff;
+}
+
+th, td, tr {
+  padding: 10px;
+  border: 1px solid #3f84b5e3;
+}
+
+.table-header {
+  &__name {
+    width: 400px;
+    cursor: pointer;
+  }
+  &__count {
+    width: 80px;
+    cursor: pointer;
+  }
+  &__price {
+    width: 140px;
+    text-align: center;
+    cursor: pointer;
+  }
+}

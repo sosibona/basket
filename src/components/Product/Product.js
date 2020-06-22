@@ -1,7 +1,8 @@
 import React from "react";
+import "./Product.scss";
 import { connect } from "react-redux";
+import { deleteProduct, updateProduct } from "../../products/products.actions";
 import PropTypes from "prop-types";
-import { deleteProduct, updateProduct } from "../products/products.actions";
 
 function isPositiveInteger(number) {
   return +number <= 0 || !isFinite(Number(+number)) || +number % 1 !== 0;

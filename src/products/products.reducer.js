@@ -2,6 +2,7 @@ import {
   DELETE_PRODUCT,
   ADD_PRODUCT,
   UPDATE_PRODUCT,
+  SORT_PRODUCT,
 } from "./products.actions";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
     { id: "3", name: "pencil", count: "1", pricePerOne: 20 },
     { id: "4", name: "laptop Acer", count: "1", pricePerOne: 1220 },
   ],
+  sortBy: { key: "", direction: "" },
 };
 
 export const productsReducer = (state = initialState, action) => {
@@ -26,7 +28,6 @@ export const productsReducer = (state = initialState, action) => {
     }
     case ADD_PRODUCT: {
       const newProduct = action.payload.data;
-      console.log(newProduct);
       const updateProducts = state.basket.concat(newProduct);
       return {
         ...state,
@@ -35,8 +36,6 @@ export const productsReducer = (state = initialState, action) => {
     }
     case UPDATE_PRODUCT: {
       const { id, count } = action.payload;
-      console.log(id);
-      console.log(count);
       const updateProducts = state.basket.map((product) => {
         if (product.id === id) {
           return {
@@ -49,6 +48,26 @@ export const productsReducer = (state = initialState, action) => {
       return {
         ...state,
         basket: updateProducts,
+      };
+    }
+    case SORT_PRODUCT: {
+      const { key } = action.payload;
+      let direction = "ascending";
+      if (
+        // state.sortBy &&
+        state.sortBy.key === key &&
+        state.sortBy.direction === "ascending"
+      ) {
+        direction = "descending";
+      }
+      const sortedList = {
+        direction,
+        key,
+      };
+      console.log(sortedList);
+      return {
+        ...state,
+        sortBy: sortedList,
       };
     }
     default:

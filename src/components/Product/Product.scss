@@ -1,0 +1,27 @@
+.product-name {
+  width: 400px;
+
+  &__detail {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.product-count {
+  width: 100px;
+  text-align: center;
+
+  &__input {
+    width: 40px;
+    outline: none;
+  }
+}
+
+.product-price {
+  text-align: center;
+}
+
+.product-delete {
+  color: red;
+  cursor: pointer;
+}

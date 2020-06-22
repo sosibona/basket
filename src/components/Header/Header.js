@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import "./Header.scss";
 import { connect } from "react-redux";
+import { addProduct } from "../../products/products.actions";
 import PropTypes from "prop-types";
-import { addProduct } from "../products/products.actions";
 
 const Header = ({ addProduct }) => {
   const [product, setProduct] = useState("");

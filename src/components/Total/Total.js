@@ -1,6 +1,7 @@
 import React from "react";
+import "./Total.scss";
 import { connect } from "react-redux";
-import { productsSelector } from "../products/products.selectors";
+import { productsSelector } from "../../products/products.selectors";
 import PropTypes from "prop-types";
 
 const Total = ({ products }) => {
