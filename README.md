@@ -20,5 +20,3 @@ Run `npm install`
 + JS ES6
 + ReactJS
 + Redux
-+ Material UI
-+ Formik
