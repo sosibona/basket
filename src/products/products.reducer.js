@@ -7,10 +7,10 @@ import {
 
 const initialState = {
   basket: [
-    { id: "1", name: "toy car", count: "1", pricePerOne: 200 },
-    { id: "2", name: "mobile phone", count: "1", pricePerOne: 220 },
-    { id: "3", name: "pencil", count: "1", pricePerOne: 20 },
-    { id: "4", name: "laptop Acer", count: "1", pricePerOne: 1220 },
+    { id: "1", name: "toy car", count: 2, pricePerOne: 100 },
+    { id: "2", name: "mobile phone", count: 3, pricePerOne: 220 },
+    { id: "3", name: "pencil", count: 10, pricePerOne: 20 },
+    { id: "4", name: "laptop Acer", count: 1, pricePerOne: 1220 },
   ],
   sortBy: { key: "", direction: "" },
 };

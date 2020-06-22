@@ -53,7 +53,7 @@ class Product extends React.Component {
             className={`product-count__input ${
               this.state.isValidCount ? "" : "error"
             }`}
-            type="text"
+            type="number"
             name="count"
             value={this.state.count}
             onChange={(event) => this.handleCountProduct(event, id)}
