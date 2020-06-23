@@ -29,13 +29,13 @@ const BasketList = ({ products, sortProducts, getProductList }) => {
               className="table-header__count"
               onClick={() => sortProducts("count")}
             >
-              Count &uarr;&darr;
+              Count
             </th>
             <th
               className="table-header__price"
               onClick={() => sortProducts("pricePerOne")}
             >
-              Price per one item &uarr;&darr;
+              Price per one item
             </th>
           </tr>
         </thead>
