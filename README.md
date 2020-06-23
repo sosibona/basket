@@ -1,6 +1,6 @@
 # Dashboard-test
 
-### Go **** for live demo.
+### Go **[here](https://frosty-brahmagupta-c6cd21.netlify.app/)** for live demo.
 
 # Installing
 
@@ -20,3 +20,5 @@ Run `npm install`
 + JS ES6
 + ReactJS
 + Redux
++ Redux-thunk
++ reselect
