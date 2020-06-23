@@ -1,11 +1,11 @@
 import { createSelector } from "reselect";
 
 export const productsSelector = (state) => {
-  return state.basket;
+  return state.products.basket;
 };
 
 export const sortSelector = (state) => {
-  return state.sortBy;
+  return state.products.sortBy;
 };
 
 export const sortedSelector = createSelector(

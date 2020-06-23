@@ -68,7 +68,6 @@ const Header = ({ addProduct }) => {
     setCount({ number: "", error: false });
     setPrice({ priceOne: "", error: false });
     const newProduct = {
-      id: Math.ceil(Math.random() * 100000).toString(),
       name: product.name,
       count: +count.number,
       pricePerOne: +price.priceOne,

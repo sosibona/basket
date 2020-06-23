@@ -1,33 +1,54 @@
-export const DELETE_PRODUCT = "DELETE_PRODUCT";
-export const ADD_PRODUCT = "ADD_PRODUCT";
-export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
+import {
+  fetchProductsList,
+  createProduct,
+  updateProducts,
+  deleteProduct,
+} from "./productGateway";
+import { productsSelector } from "./products.selectors";
+
+export const PRODUCT_LIST_RECIEVED = "PRODUCT_LIST_RECIEVED";
 export const SORT_PRODUCT = "SORT_PRODUCT";
 
-export const deleteProduct = (id) => {
+export const productListRecieved = (productList) => {
   return {
-    type: DELETE_PRODUCT,
+    type: PRODUCT_LIST_RECIEVED,
     payload: {
-      id,
+      productList,
     },
   };
 };
 
-export const addProduct = (data) => {
-  return {
-    type: ADD_PRODUCT,
-    payload: {
-      data,
-    },
+export const getProductList = () => {
+  return function (dispatch) {
+    fetchProductsList().then((productList) =>
+      dispatch(productListRecieved(productList))
+    );
+  };
+};
+
+export const addProduct = (productData) => {
+  return function (dispatch) {
+    createProduct(productData).then(() => dispatch(getProductList()));
+  };
+};
+
+export const deletedProduct = (id) => {
+  return function (dispatch) {
+    deleteProduct(id).then(() => dispatch(getProductList()));
   };
 };
 
 export const updateProduct = (id, count) => {
-  return {
-    type: UPDATE_PRODUCT,
-    payload: {
-      id,
+  return function (dispatch, getState) {
+    const products = getState();
+    const product = productsSelector(products).find(
+      (product) => product.id === id
+    );
+    const updatedProduct = {
+      ...product,
       count,
-    },
+    };
+    updateProducts(id, updatedProduct).then(() => dispatch(getProductList()));
   };
 };
 

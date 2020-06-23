@@ -13,7 +13,7 @@ const Total = ({ products }) => {
     <tr>
       <td className="total">Total</td>
       <td className="total-price" colSpan="2">
-        ${total}
+        ${total.toFixed(2)}
       </td>
     </tr>
   );

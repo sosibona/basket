@@ -2,7 +2,7 @@ import React from "react";
 import "./Product.scss";
 import { isPositiveInteger } from "../../isPositiveInteger";
 import { connect } from "react-redux";
-import { deleteProduct, updateProduct } from "../../products/products.actions";
+import { updateProduct, deletedProduct } from "../../products/products.actions";
 import PropTypes from "prop-types";
 
 class Product extends React.Component {
@@ -24,7 +24,7 @@ class Product extends React.Component {
 
     this.setState(
       {
-        count: number,
+        count: +number,
       },
       () => {
         if (!isValid) {
@@ -59,14 +59,14 @@ class Product extends React.Component {
             onChange={(event) => this.handleCountProduct(event, id)}
           />
         </td>
-        <td className="product-price">${pricePerOne}</td>
+        <td className="product-price">${pricePerOne.toFixed(2)}</td>
       </tr>
     );
   }
 }
 
 const mapDispatch = {
-  deleteProduct: deleteProduct,
+  deleteProduct: deletedProduct,
   updateProduct: updateProduct,
 };
 
